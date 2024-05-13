@@ -460,6 +460,14 @@ footer .container-grid{
     color: var(--laranja_gamifica);
 }
 
+.menu-fechado {
+    display: none;
+}
+
+#icon-barra{
+    display: none;
+}
+
 @media screen and (max-width: 1300px) {
     header{
         position: relative;
@@ -675,6 +683,3 @@ footer .container-grid{
         width: 200px;
     }
 }
-
-
-
