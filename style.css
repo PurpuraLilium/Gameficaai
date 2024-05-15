@@ -74,6 +74,10 @@ html {
     fill: #ffffff76;
 }
 
+#proximo:hover, #anterior:hover{
+    transform: scale(1.1);
+}
+
 .botoes{
     width: 150px;
 
@@ -99,6 +103,9 @@ html {
 }
 .botoes button svg{
     fill: #ffffff76;
+}
+.botoes button:hover{
+    transform: scale(1.1);
 }
 
 
