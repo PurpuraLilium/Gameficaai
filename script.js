@@ -77,24 +77,7 @@ const selecionarslide = (indice) => {
 
 // lista cases
 
-let listaCases = [
-    {
-        imagem: "https://unsplash.it/600/400?image=7",
-        descricao: "Uma empresa de tecnologia lança um desafio de gamificação onde os funcionarios devem propor e implementar ideias inovadoras."
-    },
-    {
-        imagem: "https://unsplash.it/600/400?image=13",
-        descricao: "Uma empresa de consultoria cria uma narrativa interativa de gamificação para seu programa de treinamento."
-    },
-    {
-        imagem: "https://unsplash.it/600/400?image=21",
-        descricao: "Uma empresa de vendas implementa uma competição gamificada entre equipes que competem pelo topo do ranking."
-    },
-    {
-        imagem: "https://unsplash.it/600/400?image=27",
-        descricao: "Uma empresa de sa[ude promove o bem estar dos funcionarios attráves de um desafio de gamificação de condicionamento físico."
-    },
-]
+let listaCases = []
 
 const renderizarcases = () => {
     let elementolista = document.getElementById("lista-cards")
@@ -110,4 +93,52 @@ const renderizarcases = () => {
     })
 
     elementolista.innerHTML = template
+}
+
+const carregarCases = () => {
+    fetch("http://localhost:3000/cases")
+
+    .then( (resposta) => resposta.json())
+    .then( (dados) => {
+        listaCases = dados
+    
+
+
+        renderizarcases()
+    })
+}
+
+// função formulario
+
+const solicitarOrcamento = () => {
+    // coleta de dados
+    let valorNome = document.getElementById("cnome").value
+
+    let valorEmail = document.getElementById("cemail").value
+
+    let valorTexto = document.getElementById("ctxt").value
+
+    // organizar dados
+
+    let dadosform = {
+        nome: valorNome,
+        email: valorEmail,
+        descricao: valorTexto                                                           
+    }
+
+    // enviar para api
+    fetch("http://localhost:3000/solicitacao", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(dadosform)
+    })
+    .then(resposta => console.log(resposta))   
+    .catch(erro => console.error(erro))
+ 
+        // limpar campo
+        // mostrar alert sucesso
+        //  CASO ERRO - mostrar alert
+
 }
