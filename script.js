@@ -110,7 +110,7 @@ const carregarCases = () => {
 
 // função formulario
 
-const solicitarOrcamento = () => {
+const solicitarOrcamento = (event) => {
     // coleta de dados
     let valorNome = document.getElementById("cnome").value
 
@@ -134,11 +134,23 @@ const solicitarOrcamento = () => {
         },
         body: JSON.stringify(dadosform)
     })
-    .then(resposta => console.log(resposta))   
-    .catch(erro => console.error(erro))
- 
-        // limpar campo
-        // mostrar alert sucesso
-        //  CASO ERRO - mostrar alert
+    .then(resposta => {
+        console.log(resposta)
 
+        // limpar campos
+        document.querySelector("#contato form").reset()
+
+        // mostrar alert sucesso
+        alert("Solicitção cadastrada.")
+
+    })
+    
+    .catch(erro => {
+        console.error(erro)
+
+        //  CASO ERRO - mostrar alert
+        alert("Erro na requisição")
+    })
+
+    event.preventDefault()
 }
